@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoStar — Автозапчастини з доставкою | Стрий</title>
+    <meta name="description" content="Оригінальні автозапчастини та аналоги у Стрию. Доставка по Україні. Низькі ціни, гарантія якості.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0f172a',    /* Slate 900 */
+                            red: '#dc2626',     /* Red 600 */
+                            accent: '#2563eb',  /* Blue 600 */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Додаткові стилі */
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ефект паралаксу */
+        }
+        
+        /* Анімація для кнопки дзвінка */
+        .pulse-btn {
+            animation: pulse-animation 2s infinite;
+        }
+        
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm" id="navbar">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="bg-brand-red text-white p-2 rounded transform group-hover:rotate-12 transition-transform">
+                    <i class="fa-solid fa-gear text-xl"></i>
+                </div>
+                <span class="text-2xl font-heading font-bold text-brand-blue tracking-tight">Auto<span class="text-brand-red">Star</span></span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#" class="hover:text-brand-red transition-colors">Головна</a>
+                <a href="#benefits" class="hover:text-brand-red transition-colors">Переваги</a>
+                <a href="#catalog" class="hover:text-brand-red transition-colors">Каталог</a>
+                <a href="#contacts" class="hover:text-brand-red transition-colors">Контакти</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="tel:+380671234567" class="flex items-center gap-2 text-brand-blue font-bold hover:text-brand-red transition-colors">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+38 (067) 123-45-67</span>
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-blue focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full">
+            <div class="flex flex-col p-4 gap-4 font-medium text-center">
+                <a href="#" class="block py-2 hover:bg-slate-50 rounded" onclick="toggleMenu()">Головна</a>
+                <a href="#benefits" class="block py-2 hover:bg-slate-50 rounded" onclick="toggleMenu()">Переваги</a>
+                <a href="#catalog" class="block py-2 hover:bg-slate-50 rounded" onclick="toggleMenu()">Каталог</a>
+                <a href="#contacts" class="block py-2 hover:bg-slate-50 rounded" onclick="toggleMenu()">Контакти</a>
+                <a href="tel:+380671234567" class="block py-2 text-brand-red font-bold">
+                    <i class="fa-solid fa-phone mr-2"></i>Зателефонувати
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg h-screen min-h-[600px] flex items-center justify-center text-white relative pt-16">
+        <div class="container mx-auto px-4 text-center">
+            <div class="inline-block bg-brand-red/90 px-3 py-1 rounded-full text-sm font-semibold mb-6 animate-bounce">
+                🚀 Швидка доставка по Україні
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                Надійні автозапчастини <br> для вашого авто
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light">
+                Оригінальні деталі та перевірені аналоги. Підбір по VIN-коду. <br> Відправка в день замовлення.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#catalog" class="bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-red-500/30 transform hover:-translate-y-1">
+                    Переглянути каталог
+                </a>
+                <a href="tel:+380671234567" class="bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white hover:text-brand-blue text-white px-8 py-4 rounded-lg font-bold text-lg transition-all">
+                    Зателефонувати
+                </a>
+            </div>
+        </div>
+        
+        <a href="#benefits" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/50 hover:text-white transition-colors animate-bounce">
+            <i class="fa-solid fa-chevron-down text-3xl"></i>
+        </a>
+    </header>
+
+    <section id="benefits" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-4">Чому обирають AutoStar?</h2>
+                <div class="h-1 w-20 bg-brand-red mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 bg-slate-50 rounded-xl hover:shadow-xl transition-shadow text-center group border border-slate-100">
+                    <div class="w-16 h-16 bg-blue-100 text-brand-accent rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Якість гарантовано</h3>
+                    <p class="text-slate-600 text-sm">Тільки оригінальні запчастини та сертифіковані аналоги від перевірених брендів.</p>
+                </div>
+
+                <div class="p-6 bg-slate-50 rounded-xl hover:shadow-xl transition-shadow text-center group border border-slate-100">
+                    <div class="w-16 h-16 bg-red-100 text-brand-red rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Швидка доставка</h3>
+                    <p class="text-slate-600 text-sm">Відправка Новою Поштою в день замовлення. Доставка по Україні 1-2 дні.</p>
+                </div>
+
+                <div class="p-6 bg-slate-50 rounded-xl hover:shadow-xl transition-shadow text-center group border border-slate-100">
+                    <div class="w-16 h-16 bg-blue-100 text-brand-accent rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-barcode"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Підбір по VIN</h3>
+                    <p class="text-slate-600 text-sm">Безкоштовна професійна консультація та точний підбір запчастин по VIN-коду.</p>
+                </div>
+
+                <div class="p-6 bg-slate-50 rounded-xl hover:shadow-xl transition-shadow text-center group border border-slate-100">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Чесні ціни</h3>
+                    <p class="text-slate-600 text-sm">Ми працюємо напряму з постачальниками, тому пропонуємо найкращі ціни на ринку.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-2">Популярні товари</h2>
+                    <p class="text-slate-600">Найчастіше замовляють цього тижня</p>
+                </div>
+                <a href="#" class="text-brand-accent font-semibold hover:text-brand-blue flex items-center gap-2">
+                    Весь каталог <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all overflow-hidden border border-slate-100 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=500&q=80" alt="Амортизатор" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded">ХІТ</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="text-sm text-slate-500 mb-1">Підвіска</div>
+                        <h3 class="font-bold text-lg text-brand-blue mb-2 leading-tight">Амортизатор передній Renault Logan</h3>
+                        <div class="mt-auto pt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800">1 250 ₴</span>
+                            <a href="https://t.me/autostar_manager" target="_blank" class="bg-slate-100 hover:bg-brand-accent hover:text-white text-brand-blue p-2 rounded-lg transition-colors">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all overflow-hidden border border-slate-100 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1635783850756-12c8b0561271?auto=format&fit=crop&w=500&q=80" alt="Масло" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="text-sm text-slate-500 mb-1">ТО та Фільтри</div>
+                        <h3 class="font-bold text-lg text-brand-blue mb-2 leading-tight">Моторна олива 5W-30 Synthetic (5л)</h3>
+                        <div class="mt-auto pt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800">1 800 ₴</span>
+                            <a href="https://t.me/autostar_manager" target="_blank" class="bg-slate-100 hover:bg-brand-accent hover:text-white text-brand-blue p-2 rounded-lg transition-colors">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all overflow-hidden border border-slate-100 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1598460677840-77987cb89151?auto=format&fit=crop&w=500&q=80" alt="Гальма" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="text-sm text-slate-500 mb-1">Гальмівна система</div>
+                        <h3 class="font-bold text-lg text-brand-blue mb-2 leading-tight">Колодки гальмівні VW Golf VII</h3>
+                        <div class="mt-auto pt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800">950 ₴</span>
+                            <a href="https://t.me/autostar_manager" target="_blank" class="bg-slate-100 hover:bg-brand-accent hover:text-white text-brand-blue p-2 rounded-lg transition-colors">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all overflow-hidden border border-slate-100 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Свічки" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="text-sm text-slate-500 mb-1">Електрика</div>
+                        <h3 class="font-bold text-lg text-brand-blue mb-2 leading-tight">Комплект свічок запалювання (4 шт)</h3>
+                        <div class="mt-auto pt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800">680 ₴</span>
+                            <a href="https://t.me/autostar_manager" target="_blank" class="bg-slate-100 hover:bg-brand-accent hover:text-white text-brand-blue p-2 rounded-lg transition-colors">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center bg-blue-50 p-8 rounded-xl border border-blue-100">
+                <h3 class="text-xl font-bold text-brand-blue mb-2">Не знайшли потрібну деталь?</h3>
+                <p class="text-slate-600 mb-6">Напишіть нам VIN-код вашого авто, і ми підберемо все необхідне за 15 хвилин.</p>
+                <a href="https://viber.click/380671234567" class="inline-flex items-center gap-2 bg-[#7360f2] hover:bg-[#5e4ee6] text-white px-6 py-3 rounded-lg font-bold transition-colors">
+                    <i class="fa-brands fa-viber text-xl"></i> Написати у Viber
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="py-20 bg-white border-t border-slate-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-6">Контакти</h2>
+                    <p class="text-slate-600 mb-8 text-lg">Завітайте до нашого магазину у Стрию або зателефонуйте нам для консультації.</p>
+
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-brand-red text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-blue">Адреса</h4>
+                                <p class="text-slate-600">Львівська обл., м. Стрий, <br> вул. Об'їзна, 10 (Авторинок)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-brand-red text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-blue">Телефони</h4>
+                                <a href="tel:+380671234567" class="block text-slate-600 hover:text-brand-accent transition-colors">+38 (067) 123-45-67</a>
+                                <a href="tel:+380501234567" class="block text-slate-600 hover:text-brand-accent transition-colors">+38 (050) 123-45-67</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-brand-red text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-blue">Email</h4>
+                                <a href="mailto:info@autostar.ua" class="text-slate-600 hover:text-brand-accent transition-colors">info@autostar.ua</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#0088cc] text-white flex items-center justify-center hover:scale-110 transition-transform"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#7360f2] text-white flex items-center justify-center hover:scale-110 transition-transform"><i class="fa-brands fa-viber"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#E1306C] text-white flex items-center justify-center hover:scale-110 transition-transform"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="h-[400px] bg-slate-200 rounded-xl overflow-hidden shadow-lg border border-slate-200 relative">
+                    <iframe 
+                        class="w-full h-full border-0" 
+                        src="https://maps.google.com/maps?q=49.2582744,23.8479652&z=15&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-blue text-slate-400 py-10 mt-auto">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="text-xl font-heading font-bold text-white tracking-tight block mb-2">Auto<span class="text-brand-red">Star</span></span>
+                <p class="text-sm">© 2026 Всі права захищено.</p>
+            </div>
+            
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="hover:text-white transition-colors">Політика конфіденційності</a>
+                <a href="#" class="hover:text-white transition-colors">Доставка та оплата</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="tel:+380671234567" class="pulse-btn fixed bottom-6 right-6 w-16 h-16 bg-brand-accent text-white rounded-full flex items-center justify-center shadow-xl hover:bg-blue-700 transition-colors z-40 md:hidden">
+        <i class="fa-solid fa-phone text-2xl"></i>
+    </a>
+
+    <a href="#" class="hidden md:flex fixed bottom-6 right-6 w-12 h-12 bg-slate-800 text-white rounded-full items-center justify-center shadow-lg hover:bg-brand-red transition-colors z-40 opacity-50 hover:opacity-100">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Проста логіка для мобільного меню
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const icon = menuBtn.querySelector('i');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            // Зміна іконки
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Плавна поява фону навбару при скролі
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('py-4', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('py-2', 'py-4');
+            }
+        });
+    </script>
+</body>
+</html>
